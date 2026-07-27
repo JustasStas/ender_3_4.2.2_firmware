@@ -7,7 +7,6 @@ module.exports = {
             "Z_SAFE_HOMING",
             "USE_PROBE_FOR_Z_HOMING",
             ["Z_MIN_PROBE_PIN", q`PB1`],
-            ["Z_MIN_PROBE_ENDSTOP_HIT_STATE", q`LOW`],
             "LCD_BED_LEVELING",
             ["DEFAULT_LEVELING_FADE_HEIGHT", 20],
             ["NOZZLE_TO_PROBE_OFFSET", [0, 0, 0]],
