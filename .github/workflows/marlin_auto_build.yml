@@ -4,11 +4,20 @@ on:
   push:
     paths:
       - 'builds/**'
+  workflow_dispatch:
   schedule:
     - cron:  '30 3 * * *'
 
 jobs:
   create_builds:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     steps:
     - uses: zisismaras/marlin_auto_build@master
+      continue-on-error: true
+    - name: Upload built firmware as artifact
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: firmware-bin
+        path: marlin_auto_build/dist/assets/*.bin
+        if-no-files-found: warn
