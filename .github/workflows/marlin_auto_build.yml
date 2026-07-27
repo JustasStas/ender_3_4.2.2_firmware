@@ -14,10 +14,12 @@ jobs:
     steps:
     - uses: zisismaras/marlin_auto_build@master
       continue-on-error: true
-    - name: Upload built firmware as artifact
+    - name: Upload built firmware and generated config as artifacts
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: firmware-bin
-        path: marlin_auto_build/dist/assets/*.bin
+        name: firmware-and-config
+        path: |
+          marlin_auto_build/dist/assets/*.bin
+          marlin_auto_build/dist/current_build/Marlin/Configuration.h
         if-no-files-found: warn
